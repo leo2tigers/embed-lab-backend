@@ -1,0 +1,6 @@
+version: "3.2"
+
+services: 
+    backend:
+        container_name: embed_lab_backend
+        restart: always

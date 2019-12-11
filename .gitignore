@@ -1,6 +1,8 @@
 # compiled output
 /dist
 /node_modules
+/db-volume
+/my.cnf
 
 # Logs
 logs
@@ -9,6 +11,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
+
+# Environment variables
+.env
 
 # OS
 .DS_Store
