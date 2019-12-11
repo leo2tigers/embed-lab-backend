@@ -1,0 +1,29 @@
+version: "3.2"
+
+services: 
+    backend:
+        image: node:12-alpine
+        volumes:
+            - .:/server
+        command: sh -c 'cd /server && yarn && yarn build && yarn start:prod'
+        environment: 
+            MYSQL_USER:
+            MYSQL_PASSWORD:
+            MYSQL_URL:
+            MYSQL_DBNAME:
+        ports:
+            - 3000:3000
+        depends_on:
+            - db
+
+    db:
+        container_name: embed_lab_backend-db
+        image: mysql:8
+        restart: always
+        environment: 
+            MYSQL_ROOT_PASSWORD: 
+        ports: 
+            - 3306:3306
+        volumes:
+            - ./db-volume:/var/lib/mysql
+            - ./my.cnf:/etc/my.cnf
