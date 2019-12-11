@@ -5,6 +5,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "tscversion": "tsc --version",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
@@ -45,7 +46,7 @@
     "tsc-watch": "2.2.1",
     "tsconfig-paths": "3.8.0",
     "tslint": "5.16.0",
-    "typescript": "3.4.3"
+    "typescript": "3.6.4"
   },
   "jest": {
     "moduleFileExtensions": [
