@@ -20,8 +20,7 @@ export class ApiService {
     async toggleAutoState() {
         if (this.autoState) {
             this.autoState = false;
-        }
-        else if (!this.autoState) {
+        } else if (!this.autoState) {
             this.autoState = true;
         }
     }
@@ -31,7 +30,11 @@ export class ApiService {
     }
 
     async getPmDataWithLimit(num: number) {
-        return await this.pmRepository.createQueryBuilder('pm').orderBy('pm.id', 'DESC').limit(num).getMany();
+        return await this.pmRepository
+            .createQueryBuilder('pm')
+            .orderBy('pm.id', 'DESC')
+            .limit(num)
+            .getMany();
     }
 
     async addPmData(pmDto: PMDto) {

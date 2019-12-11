@@ -8,7 +8,7 @@ export class ApiController {
 
     @Get('auto')
     async getAutoState() {
-        return {autostate: await this.apiService.getAutoState()};
+        return { autostate: await this.apiService.getAutoState() };
     }
 
     @Post('auto')
@@ -20,8 +20,7 @@ export class ApiController {
     async getPmData(@Query('num') num: number) {
         if (num) {
             return this.apiService.getPmDataWithLimit(num);
-        }
-        else {
+        } else {
             return this.apiService.getPmData();
         }
     }
@@ -29,6 +28,6 @@ export class ApiController {
     @Post('pm')
     async addPmData(@Body() pmDto: PMDto) {
         await this.apiService.addPmData(pmDto);
-        return {autostate: await this.apiService.getAutoState()};
+        return { autostate: await this.apiService.getAutoState() };
     }
 }

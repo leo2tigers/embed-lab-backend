@@ -8,6 +8,6 @@ export class PM {
     @Column('datetime')
     timestamp: Date;
 
-    @Column({type: 'decimal', precision: 7, scale: 3})
+    @Column({ type: 'decimal', precision: 7, scale: 3 })
     pm: number;
 }

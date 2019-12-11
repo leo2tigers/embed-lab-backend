@@ -5,8 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PM } from '../entities/pm.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([PM])],
-  controllers: [ApiController],
-  providers: [ApiService],
+    imports: [TypeOrmModule.forFeature([PM])],
+    controllers: [ApiController],
+    providers: [ApiService],
 })
 export class ApiModule {}
