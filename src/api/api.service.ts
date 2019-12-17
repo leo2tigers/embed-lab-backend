@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PM } from '../entities/pm.entity';
 import { Repository, getRepository } from 'typeorm';
@@ -7,14 +7,22 @@ import { PMDto } from './api.dto';
 @Injectable()
 export class ApiService {
     private autoState: boolean = false;
+    private fanState: boolean = false;
 
     constructor(
         @InjectRepository(PM)
         private readonly pmRepository: Repository<PM>,
     ) {}
 
+    async getAllState() {
+        return {
+            autostate: this.autoState,
+            fanstate: this.fanState,
+        };
+    }
+
     async getAutoState() {
-        return this.autoState;
+        return { autostate: this.autoState };
     }
 
     async toggleAutoState() {
@@ -22,6 +30,28 @@ export class ApiService {
             this.autoState = false;
         } else if (!this.autoState) {
             this.autoState = true;
+        }
+    }
+
+    async getFanState() {
+        if (this.autoState) {
+            return { fanstate: `auto` };
+        } else {
+            return { fanstate: this.fanState };
+        }
+    }
+
+    async toggleFanState() {
+        if (this.autoState) {
+            throw new BadRequestException(
+                `Currently in automatic mode, cannot toggle fan state`,
+            );
+        } else {
+            if (this.fanState) {
+                this.fanState = false;
+            } else if (!this.fanState) {
+                this.fanState = true;
+            }
         }
     }
 

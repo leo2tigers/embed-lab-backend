@@ -1,4 +1,5 @@
 export class PMDto {
-    pm: number;
+    pm25: number;
+    pm10: number;
     timestamp?: Date;
 }

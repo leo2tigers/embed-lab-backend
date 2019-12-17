@@ -9,5 +9,8 @@ export class PM {
     timestamp: Date;
 
     @Column({ type: 'decimal', precision: 7, scale: 3 })
-    pm: number;
+    pm25: number;
+
+    @Column({ type: 'decimal', precision: 7, scale: 3 })
+    pm10: number;
 }

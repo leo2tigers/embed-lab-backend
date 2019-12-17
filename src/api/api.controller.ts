@@ -6,14 +6,29 @@ import { PMDto } from './api.dto';
 export class ApiController {
     constructor(private readonly apiService: ApiService) {}
 
+    @Get('state')
+    async getAllState() {
+        return this.apiService.getAllState();
+    }
+
     @Get('auto')
     async getAutoState() {
-        return { autostate: await this.apiService.getAutoState() };
+        return this.apiService.getAutoState();
     }
 
     @Post('auto')
     async toggleAutoState() {
         return this.apiService.toggleAutoState();
+    }
+
+    @Get('fan')
+    async getFanState() {
+        return this.apiService.getFanState();
+    }
+
+    @Post('fan')
+    async toggleFanState() {
+        return this.apiService.toggleFanState();
     }
 
     @Get('pm')
@@ -28,6 +43,6 @@ export class ApiController {
     @Post('pm')
     async addPmData(@Body() pmDto: PMDto) {
         await this.apiService.addPmData(pmDto);
-        return { autostate: await this.apiService.getAutoState() };
+        return this.apiService.getAllState();
     }
 }
